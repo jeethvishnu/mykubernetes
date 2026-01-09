@@ -1,7 +1,7 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: practice-Pod
+  name: practice-pod
   labels:
     chief: vishnu
     duration: 80hrs
