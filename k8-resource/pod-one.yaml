@@ -4,7 +4,7 @@ metadata:
   name: practice-Pod
   labels:
     chief: vishnu
-    duration: 80
+    duration: 80hrs
 spec:
   containers:
   - name: nginx
