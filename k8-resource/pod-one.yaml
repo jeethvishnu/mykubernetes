@@ -1,0 +1,11 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: practice-Pod
+  labels:
+    chief: vishnu
+    duration: 80
+spec:
+  containers:
+  - name: nginx
+    image: nginx
