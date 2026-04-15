@@ -1,0 +1,9 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: labels
+  labels:
+    course: k8s
+    duration: 12hrs
+
+    

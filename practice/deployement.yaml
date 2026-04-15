@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: lkj
+  labels:
+    environment: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+      founder: jj
+  template:
+    metadata:
+      labels:
+        app: nginx
+        founder: jj
+        extra-key: extra-value
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+

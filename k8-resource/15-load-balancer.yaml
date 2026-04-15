@@ -1,0 +1,17 @@
+# ###########note: if we create lb then automatically nodeport and cluster ip will be created.
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-lb
+spec:
+  type: LoadBalancer
+  selector:
+    name: frontend
+    project: expense
+    component: frontend
+    environment: dev
+  ports:
+  - protocol: TCP
+    port: 80 #service port
+    targetPort: 80 #target port
+    nodePort: 29001 #we can fix the node port like this

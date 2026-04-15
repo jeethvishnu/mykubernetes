@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: annotations
+  labels:
+    name: k8s
+    course: devops
+  annotations:
+    jenkins.build.url: vjeeth.site
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+

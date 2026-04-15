@@ -1,0 +1,21 @@
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: asd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+      project: vid
+      purpose: kub
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        project: vid
+        purpose: kub
+    spec:
+      containers:
+      - name: nginx
+        image: nginx

@@ -8,6 +8,87 @@ spec:
     image: nginx
     ports:
     - containerPort: 80
-
-
   
+
+
+# kind: Pod
+# apiVersion: v1
+# metadata: 
+# name: pp1
+# labels:
+#   name: pp1
+#   environment: dev
+# spec:
+# containers:
+# - name: nginx
+#   image: nginx
+#   ports:
+#   - containerPort: 80
+
+
+
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: exx
+#   labels:
+#     name: exx
+#     environment: dev
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     ports:
+#     - containerPort: 80
+
+
+
+
+
+
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: gg
+#   labels:
+#     name: gg
+#     environment: dev
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     ports:
+#     - containerPort: 80
+
+
+
+# kind: Pod
+# apiVersion: v1
+# metadata: 
+#   name: kkl
+#   labels:
+#     name: kkl
+#     environment: dev
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     ports:
+#     - containerPort: 80
+#   - name: alma
+#     image: almalinux
+    
+
+
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: dd
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     ports:
+#     - containerPort: 80
+#   - name: alma
+#     image: almalinux

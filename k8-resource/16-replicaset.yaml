@@ -1,0 +1,25 @@
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: rep-set
+  # these labels belong to replica set resource
+  labels:
+    app: expense
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+      app: expense
+      # below is the pod definiation
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        app: expense
+        author: vishnu
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
