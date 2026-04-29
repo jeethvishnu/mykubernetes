@@ -2,11 +2,32 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-   name: expense-1
-   region: us-east-1
+  name: expense-1
+  region: us-east-1
+
+availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
 
 managedNodeGroups:
   - name: spot
     instanceType: m5.large
     desiredCapacity: 3
+    minSize: 1
+    maxSize: 5
     spot: true
+    amiFamily: AmazonLinux2
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+        
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
+
+# metadata:
+#    name: expense-1
+#    region: us-east-1
+
+# managedNodeGroups:
+#   - name: spot
+#     instanceType: m5.large
+#     desiredCapacity: 3
+#     spot: true
