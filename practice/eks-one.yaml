@@ -1,34 +1,34 @@
-apiVersion: eksctl.io/v1alpha5
-kind: ClusterConfig
-
-metadata:
-  name: expense-1
-  region: us-east-1
-
-availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
-
-managedNodeGroups:
-  - name: spot
-    instanceType: m5.large
-    desiredCapacity: 3
-    minSize: 1
-    maxSize: 5
-    spot: true
-    ami: ami-0220d79f3f480ecf5   # your custom AMI ID here
-    amiFamily: AmazonLinux2023      # must match your AMI OS
-    overrideBootstrapCommand: |
-      #!/bin/bash
-      /etc/eks/bootstrap.sh expense-1
-
 # apiVersion: eksctl.io/v1alpha5
 # kind: ClusterConfig
 
 # metadata:
-#    name: expense-1
-#    region: us-east-1
+#   name: expense-1
+#   region: us-east-1
+
+# availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
 
 # managedNodeGroups:
 #   - name: spot
 #     instanceType: m5.large
 #     desiredCapacity: 3
+#     minSize: 1
+#     maxSize: 5
 #     spot: true
+#     ami: ami-0220d79f3f480ecf5   # your custom AMI ID here
+#     amiFamily: AmazonLinux2023      # must match your AMI OS
+#     overrideBootstrapCommand: |
+#       #!/bin/bash
+#       /etc/eks/bootstrap.sh expense-1
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+   name: expense-1
+   region: us-east-1
+
+managedNodeGroups:
+  - name: spot
+    instanceType: m5.large
+    desiredCapacity: 3
+  

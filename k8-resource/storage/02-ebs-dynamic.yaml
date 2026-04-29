@@ -1,0 +1,36 @@
+#  here no need to create pv its dynamic storage calss will create it that will be handled by the admin refer ebs-sc-dynamic file
+# PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-dynamic
+spec:
+  storageClassName: "ebs-expense" # Empty string must be explicitly set otherwise default StorageClass will be set
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+
+---
+# POD
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-dynamic
+  labels:
+    purpose: ebs-dynamic
+    project: expense
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html
+  nodeSelector:
+    # mention here key and value and we are giving this because we are telling that wherever the region vol is created there only instances should go
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: ebs-dynamic
