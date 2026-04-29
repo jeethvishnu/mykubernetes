@@ -14,11 +14,12 @@ managedNodeGroups:
     minSize: 1
     maxSize: 5
     spot: true
-    amiFamily: AmazonLinux2
-    iam:
-      withAddonPolicies:
-        autoScaler: true
-        
+    ami: ami-0220d79f3f480ecf5   # your custom AMI ID here
+    amiFamily: Red Hat Enterprise Linux      # must match your AMI OS
+    overrideBootstrapCommand: |
+      #!/bin/bash
+      /etc/eks/bootstrap.sh expense-1
+
 # apiVersion: eksctl.io/v1alpha5
 # kind: ClusterConfig
 
