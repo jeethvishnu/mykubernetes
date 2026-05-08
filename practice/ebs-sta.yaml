@@ -10,7 +10,7 @@ spec:
   csi:
     driver: ebs.csi.aws.com
     fsType: ext4
-    volumeHandle: vol-0c0b45ae71fd694de
+    volumeHandle: vol-065f3bbe40cd68fe1
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -33,15 +33,15 @@ metadata:
   labels:
     purpose: ebs-pod
 spec:
+  nodeSelector:                              # ✅ nodeSelector under spec
+    topology.kubernetes.io/zone: us-east-1d
   containers:
   - name: app
     image: nginx
-  nodeSelector:
-    topology.kubernetes.io/zone: us-east-1d
-    volumeMounts:
+    volumeMounts:                            # ✅ volumeMounts inside container
     - name: persistent-storage
       mountPath: /usr/share/nginx/html
-  volumes:
+  volumes:                                   # ✅ volumes under spec
   - name: persistent-storage
     persistentVolumeClaim:
       claimName: ebs-static-claim
