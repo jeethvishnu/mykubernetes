@@ -45,17 +45,17 @@ spec:
   - name: persistent-storage
     persistentVolumeClaim:
       claimName: ebs-static-claim
-# ---
-# kind: Service
-# apiVersion: v1
-# metadata:
-#   name: nginx-service
-# spec:
-#   type: LoadBalancer       # ✅ type goes in Service, not Pod
-#   selector:            # ✅ selector goes in Service — matches Pod labels
-#     purpose: ebs-pod
-#   ports:
-#   - protocol: TCP
-#     port: 80
-#     targetPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+spec:
+  type: LoadBalancer       # ✅ type goes in Service, not Pod
+  selector:            # ✅ selector goes in Service — matches Pod labels
+    purpose: ebs-pod
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
     
