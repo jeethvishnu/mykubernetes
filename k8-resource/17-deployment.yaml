@@ -1,23 +1,21 @@
 kind: Deployment
 apiVersion: apps/v1
-metadata:
-  name: deploy-set
+metadata: 
+  name: deploy
   labels:
-    tier: backend
+    component: backend
+    project: expense
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      tier: backend
+      app: nginx
   template:
     metadata:
       labels:
-        tier: backend
-        extra-key: extra-value
+        app: nginx
     spec:
       containers:
       - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80
-            
+        image: nginx:alpine
+      

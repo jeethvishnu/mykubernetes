@@ -1,17 +1,17 @@
 # ###########note: if we create lb then automatically nodeport and cluster ip will be created.
-kind: Pod
+kind: Service
 apiVersion: v1
 metadata:
-  name: nginx-lb
+  name: nginx-service
 spec:
-  type: LoadBalancer
-  selector:
+  type: LoadBalancer       # ✅ type goes in Service, not Pod
+  selector:            # ✅ selector goes in Service — matches Pod labels
     name: frontend
     project: expense
     component: frontend
     environment: dev
   ports:
   - protocol: TCP
-    port: 80 #service port
-    targetPort: 80 #target port
-    nodePort: 29001 #we can fix the node port like this
+    port: 80
+    targetPort: 80
+    nodePort: 30001

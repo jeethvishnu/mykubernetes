@@ -1,15 +1,26 @@
 kind: Pod
 apiVersion: v1
-metadata:
-  name: configaring
+metadata: 
+  name: refer-pod
 spec:
   containers:
   - name: nginx
     image: nginx
     envFrom:
     - configMapRef:
-      name: con-map
-      # 2nd way
+        name: configs
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: configaring
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     envFrom:
+#     - configMapRef:
+#       name: con-map
+#       # 2nd way
     # env:
     # - name: course
     #   valueFrom:

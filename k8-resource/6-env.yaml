@@ -1,85 +1,100 @@
-kind: Pod
-apiVersion: v1
-metadata:
-  name: envi
-  labels:
-    name: vishnu
-spec:
-  containers:
-  - name: almalinux
-    image: almalinux
-    env:
-    - name: course
-      value: 'k8s'
-    - name: duration
-      value: '20hrs'
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: envi
+#   labels:
+#     name: vishnu
+# spec:
+#   containers:
+#   - name: almalinux
+#     image: almalinux
+#     env:
+#     - name: course
+#       value: 'k8s'
+#     - name: duration
+#       value: '20hrs'
 
 
-kind: Pod
-apiVersion: v1
-metadata:
-  name: lkk
-  labels:
-    name: lkk
-    environment: prod
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    env:
-    - name: ngg
-      value: 'd2'
-    - name: duration
-      value: '20hrs'
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: lkk
+#   labels:
+#     name: lkk
+#     environment: prod
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     env:
+#     - name: ngg
+#       value: 'd2'
+#     - name: duration
+#       value: '20hrs'
 
 
-kind: Pod
-apiVersion: v1
-metadata:
-  name: gf
-  labels:
-    name: ss
-    course: 'k8s'
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80
-    env:
-    - name: environment
-      value: prod
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: gf
+#   labels:
+#     name: ss
+#     course: 'k8s'
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     ports:
+#     - containerPort: 80
+#     env:
+#     - name: environment
+#       value: prod
       
 
-kind: Pod
-apiVersion: v1
-metadata: 
-  name: gg
-  labels:
-    name: gg
-    environment: dev
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80
-    env:
-    - name: gg
-      course: devops
+# kind: Pod
+# apiVersion: v1
+# metadata: 
+#   name: gg
+#   labels:
+#     name: gg
+#     environment: dev
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     ports:
+#     - containerPort: 80
+#     env:
+#     - name: gg
+#       course: devops
 
+
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: ss
+#   labels:
+#     course: sa
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     env:
+#     - name: assp
+#       course: kkl
 
 kind: Pod
 apiVersion: v1
 metadata:
-  name: ss
+  name: envs
   labels:
-    course: sa
+    purpose: dev
 spec:
   containers:
-  - name: nginx
+  - name: nginx 
     image: nginx
     env:
-    - name: assp
-      course: kkl
+    - name: sdf
+      value: "extra-value"
+
       

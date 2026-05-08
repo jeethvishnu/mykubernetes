@@ -1,0 +1,90 @@
+# since im using local machine im using this yaml bcs there wont be any volumes EBS is an AWS service — it requires actual AWS EC2 nodes to attach volumes to
+# original yaml is below this yaml.
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-local-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 50Gi
+  storageClassName: ""
+  hostPath:
+    path: /tmp/nginx-data   # local directory on your machine
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-ebs-claim
+spec:
+  volumeName: my-local-pv
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 50Gi
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: my-ebs-pv
+# spec:
+#   accessModes:
+#   - ReadWriteOnce
+#   capacity:
+#     storage: 5Gi
+#   csi:
+#     driver: ebs.csi.aws.com
+#     fsType: ext4
+#     volumeHandle: vol-03c604538dd7d2f41
+# ---
+# # pvc
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: my-ebs-claim
+# spec:
+#   storageClassName: ""
+#   volumeName: my-ebs-pv
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 3Gi
+---
+# pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  labels:
+    purpose: ebs-static
+    project: balancerr
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: my-ebs-claim
+---
+# ###########note: if we create lb then automatically nodeport and cluster ip will be created.
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+spec:
+  type: LoadBalancer       # ✅ type goes in Service, not Pod
+  selector:            # ✅ selector goes in Service — matches Pod labels
+    purpose: ebs-static
+    project: balancerr
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30001

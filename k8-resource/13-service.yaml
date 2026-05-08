@@ -1,18 +1,38 @@
 # clluster ip
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: nginx-service
+# spec: 
+#   selector:
+#     name: frontend
+#     project: expense
+#     component: frontend
+#     environment: dev
+#   ports:
+#     - protocol: TCP
+#       port: 80 #service port
+#       targetPort: 80 #target port
+
 kind: Service
 apiVersion: v1
 metadata:
   name: nginx-service
-spec: 
+  labels:
+    name: frontend
+    project: expense
+    component: frontend
+    environment: prod
+spec:
   selector:
     name: frontend
     project: expense
     component: frontend
-    environment: dev
+    environment: prod
   ports:
     - protocol: TCP
-      port: 80 #service port
-      targetPort: 80 #target port
+      port: 80
+      targetPort: 80
 
 
 

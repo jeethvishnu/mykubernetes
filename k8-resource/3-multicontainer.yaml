@@ -1,11 +1,26 @@
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: multi-container
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#   - name: alma
+#     image: "almalinux:9"
+#     command: ["sleep","2000"]
+
 kind: Pod
 apiVersion: v1
 metadata:
-  name: multi-container
+  name: multi-pod-practice
+  labels:
+    purpose: multi
 spec:
   containers:
   - name: nginx
     image: nginx
   - name: alma
-    image: "almalinux:9"
-    command: ["sleep","2000"]
+    image: almalinux
+    command: ["sleep", "2000"]
+    

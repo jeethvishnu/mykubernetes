@@ -1,40 +1,75 @@
+# kind: Deployment
+# apiVersion: apps/v1
+# metadata:
+#   name: mysql
+#   namespace: expense
+#   labels:
+#     component: mysql
+#     project: expense
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       component: mysql
+#       project: expense
+#   template:
+#     metadata:
+#       labels:
+#         tier: db
+#         component: mysql
+#         project: expense
+#     spec:
+#       containers:
+#       - name: mysql
+#         image: jeeth22/db:v1
+                   
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: mysql
+#   namespace: expense
+# spec: 
+#   selector:
+#     tier: db
+#     component: mysql
+#     project: expense
+#   ports:
+#     - protocol: TCP
+#       port: 3306 #service port
+#       targetPort: 3306 #target port
+
 kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: mysql
-  namespace: expense
   labels:
-    component: mysql
+    name: mysql
+    component: database
     project: expense
 spec:
   replicas: 2
   selector:
     matchLabels:
-      component: mysql
-      project: expense
+      app: mysql
   template:
     metadata:
       labels:
-        tier: db
-        component: mysql
-        project: expense
+        app: mysql
     spec:
       containers:
       - name: mysql
         image: jeeth22/db:v1
-                   
 ---
+
 kind: Service
 apiVersion: v1
 metadata:
   name: mysql
-  namespace: expense
-spec: 
+spec:
   selector:
-    tier: db
-    component: mysql
-    project: expense
+    app: mysql
   ports:
-    - protocol: TCP
-      port: 3306 #service port
-      targetPort: 3306 #target port
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306

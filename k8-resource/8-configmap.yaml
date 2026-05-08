@@ -1,54 +1,23 @@
-kind: Pod
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: con-map
+# data:
+#   course: "aws cloud k8s"
+#   trainer: 'me'
+#   github: "https://github.com/jeethvishnu/mykubernetes.git"
+
+kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: con-map
+  name: configs
+  labels:
+    purpose: dev
 data:
   course: "aws cloud k8s"
   trainer: 'me'
   github: "https://github.com/jeethvishnu/mykubernetes.git"
 
 
-
-kind: Pod
-apiVersion: v1
-metadata:
-  name: config-pod
-  labels:
-    name: cc
-    environment: dev
-data:
-  course: "k8s"
-  description: "about kubernetes"
-
-
-kind: Pod
-apiVersion: v1
-metadata:
-  name: pod-reference
-spec:
-  containers:
-  - name: alma
-    image: almalinux
-    env:
-    - name: course
-      valueFrom:
-        configMapKeyRef:
-          name: config-pod
-          key: course
-
-kind: Pod
-apiVersion: v1
-metadata:
-  name: whole-pod
-  labels:
-    name: ww
-    environment: dev
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    envFrom:
-    - configMapRef:
-        name: config-pod
 
       
