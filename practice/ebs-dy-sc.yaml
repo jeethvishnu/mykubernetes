@@ -3,4 +3,5 @@ kind: StorageClass
 metadata:
   name: ebs-dynamic-sc
 provisioner: ebs.csi.aws.com
+reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
