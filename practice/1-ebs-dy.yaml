@@ -6,7 +6,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: ebs-dynamic-sc
-  volumeName: ebs-dy-claim
   resources:
     requests:
       storage: 4Gi
@@ -18,6 +17,8 @@ metadata:
   labels:
     purpose: ebs-dy
 spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1a
   containers:
   - name: nginx
     image: nginx
