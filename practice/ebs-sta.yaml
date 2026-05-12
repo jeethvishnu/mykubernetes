@@ -31,7 +31,7 @@ kind: Pod
 metadata:
   name: app
   labels:
-    purpose: ebs-pod
+    purpose: ebs-dy
 spec:
   nodeSelector:                              # ✅ nodeSelector under spec
     topology.kubernetes.io/zone: us-east-1d
@@ -50,6 +50,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: nginx-service
+  labels:
+    purpose: ebs-dy
 spec:
   type: LoadBalancer       # ✅ type goes in Service, not Pod
   selector:            # ✅ selector goes in Service — matches Pod labels
@@ -58,4 +60,3 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-    
