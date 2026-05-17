@@ -8,4 +8,4 @@ metadata:
 managedNodeGroups:
   - name: insta
     instanceType: m5.large
-    desiredCapacity: 3
+    desiredCapacity: 2
