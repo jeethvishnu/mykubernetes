@@ -45,20 +45,19 @@ spec:
     persistentVolumeClaim:
       claimName: ebs-static-claim
 ---
-# ###########note: if we create lb then automatically nodeport and cluster ip will be created.
-kind: Service
+kind: Pod
 apiVersion: v1
-metadata:
-  name: nginx-service
+metadata: 
+  name: pod-np
 spec:
-  type: LoadBalancer       # ✅ type goes in Service, not Pod
-  selector:            # ✅ selector goes in Service — matches Pod labels
+  type: NodePort
+  selector:
     name: frontend
     project: expense
     component: frontend
     environment: dev
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-    nodePort: 30001
+    - protocol: TCP
+      port: 80 #service port
+      targetPort: 80 #target port
+      nodePort: 30001 #we can fix the node port like this
