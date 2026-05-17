@@ -1,7 +1,6 @@
-#node port is used whenever we want t0 connect the internet externally to the nodes inside the cluster.
-kind: Pod
 apiVersion: v1
-metadata: 
+kind: Service
+metadata:
   name: pod-np
 spec:
   type: NodePort
@@ -12,6 +11,6 @@ spec:
     environment: dev
   ports:
     - protocol: TCP
-      port: 80 #service port
-      targetPort: 80 #target port
-      nodePort: 29009 #we can fix the node port like this
+      port: 80
+      targetPort: 80
+      nodePort: 30001
