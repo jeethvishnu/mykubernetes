@@ -8,10 +8,10 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: topology.kubernetes.io/zone
+          - key: project
             operator: In
             values:
-              jeeth       
+            - jeeth       
   containers:
   - name: nginx
     image: nginx
