@@ -16,11 +16,8 @@ spec:
   - name: nginx
     image: nginx
   tolerations:
-  - key: "key1"
+  - key: "project"
     operator: "Equal"
-    value: "value1"
+    value: "jeeth"
     effect: "NoSchedule"
-  - key: "key1"
-    operator: "Equal"
-    value: "value1"
-    effect: "NoExecute"
+  
