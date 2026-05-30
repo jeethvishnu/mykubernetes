@@ -43,14 +43,15 @@ metadata:
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
     alb.ingress.kubernetes.io/group.name: vjeeth
 spec:
+  ingressClassName: alb
   rules:
-  - host: "app1.vjeeth.fun" #alb rule
+  - host: "app1.vjeeth.fun" # ALB Rule
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: app1 #alb rtarget grp
+            name: app1 # ALB Target group
             port:
               number: 80
