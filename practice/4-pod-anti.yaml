@@ -41,10 +41,10 @@ metadata:
     name: pod-3
     purpose: pod-anti
 spec:
-  podAntiAffinity:
+  affinity:
+    podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        podAffinityTerm:
+      - podAffinityTerm:
           labelSelector:
             matchExpressions:
             - key: name
