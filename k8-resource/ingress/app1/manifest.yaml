@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: vjeeth/app1:v1
+        image: jeeth22/app1:v1
 ---
 apiVersion: v1
 kind: Service
