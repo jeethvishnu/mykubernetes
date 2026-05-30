@@ -11,13 +11,13 @@ spec:
           - key: project
             operator: In
             values:
-            - jeeth       
+            - lock       
   containers:
   - name: nginx
     image: nginx
   tolerations:
   - key: "project"
     operator: "Equal"
-    value: "jeeth"
+    value: "lock"
     effect: "NoSchedule"
   
